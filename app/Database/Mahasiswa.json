@@ -8,23 +8,16 @@
     },
     "672017002": {
         "nim": "672017002",
-        "nama": "Mahasiswa 2",
-        "tanggal_lahir": "02\/01\/1999",
-        "no_hp": "0812345672",
+        "nama": "berhasil update",
+        "tanggal_lahir": "01\/10\/1999",
+        "no_hp": "08232322",
         "kode_progdi": "67"
     },
-    "672017004": {
-        "nim": "672017004",
-        "nama": "Mahasiswa 4",
-        "tanggal_lahir": "01\/10\/1999",
-        "no_hp": "0823232323",
-        "kode_progdi": "77"
-    },
-    "6720170010": {
-        "nim": "6720170010",
+    "672017010": {
+        "nim": "672017010",
         "nama": "Mahasiswa 10",
         "tanggal_lahir": "01\/10\/1999",
         "no_hp": "0823232323",
-        "kode_progdi": "77"
+        "kode_progdi": "67"
     }
 }

@@ -39,11 +39,11 @@ class MahasiswaController extends Controller
     public function update()
     {
         $mhs = new Mahasiswa(
-            '672017004',
-            'Mahasiswa 4',
+            '672017002',
+            'berhasil update',
             '01/10/1999',
-            '0823232323',
-            '77'
+            '08232322',
+            '67'
         );
         $result = MahasiswaModel::updateData($mhs);
         var_dump($result);
