@@ -26,8 +26,8 @@ class MahasiswaController extends Controller
     public function insert()
     {
         $mhs = new Mahasiswa(
-            '6720170010',
-            'Mahasiswa 10',
+            '672017001',
+            'Mahasiswa 1123',
             '01/10/1999',
             '0823232323',
             '77'

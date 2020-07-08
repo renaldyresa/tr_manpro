@@ -51,7 +51,6 @@ class ProgdiHelper
             ];
             $obj = [$data->nim => $dt];
             $json = $json + $obj;
-            var_dump($json);
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return $data;
@@ -63,12 +62,11 @@ class ProgdiHelper
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
         if(array_key_exists($data->kode_progdi, $json)){
-            $dt = [ 
+            $json[$data->kode_progdi] = [ 
                 'kode_progdi' => $data->kode_progdi,
                 'nama_progdi' => $data->nama_progdi,
                 'kode_fakultas' => $data->kode_fakultas
             ];
-            array_push($json, $dt);
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return $data;
@@ -77,12 +75,12 @@ class ProgdiHelper
         }
     }
 
-    public static function delete($kode_fakultas)
+    public static function delete($id)
     {
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-        if(array_key_exists($kode_fakultas, $json)){
-            unset($json[$kode_fakultas]);
+        if(array_key_exists($id, $json)){
+            unset($json[$id]);
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return True;

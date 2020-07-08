@@ -2,11 +2,11 @@
 
 namespace App\Helper ;
 
-use App\Entity\KST;
+use App\Entity\DetailMatakuliah;
 
-class KSTHelper
+class DetailMatakuliahHelper
 {
-    private static $table = "KST" ;
+    private static $table = "DetailMatakuliah" ;
 
     public static function selectAll()
     {
@@ -14,14 +14,10 @@ class KSTHelper
         $json = json_decode(file_get_contents($path), true);
         $listdata = array();
         foreach($json as $dt){
-            $data = new KST(
-                $dt['kode_kst'],
-                $dt['tahun_ajaran'],
-                $dt['semester'],
-                $dt['status'],
-                $dt['nilai'],
-                $dt['kode_kelas'],
-                $dt['nim']
+            $data = new DetailMatakuliah(
+                $dt['kode_matkul'],
+                $dt['kode_progdi'],
+                $dt['detail_matkul']
             );
             array_push($listdata, $data);
         }
@@ -45,19 +41,15 @@ class KSTHelper
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
 
-        if(array_key_exists($data->kode_kst, $json)){
+        if(array_key_exists($data->detail_matkul, $json)){
             return "data sudah ada";
         }else{
             $dt = [ 
-                ['kode_kst'] => $data->kode_kst,
-                ['tahun_ajaran'] => $data->tahun_ajaran,
-                ['semester'] => $data->semester,
-                ['status'] => $data->status,
-                ['nilai'] => $data->nilai,
-                ['kode_kelas'] => $data->kode_kelas,
-                ['nim'] => $data->nim
+                ['kode_matkul'] => $data->kode_matkul,
+                ['kode_progdi'] => $data->kode_progdi,
+                ['detail_matkul'] => $data->detail_matkul
             ];
-            $obj = [$data->kode_kst => $dt];
+            $obj = [$data->detail_matkul => $dt];
             $json = $json + $obj;
             var_dump($json);
             $jsonData = json_encode($json);
@@ -70,15 +62,11 @@ class KSTHelper
     {
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-        if(array_key_exists($data->kode_kst, $json)){
-            $json[$data->kode_kst] = [ 
-                ['kode_kst'] => $data->kode_kst,
-                ['tahun_ajaran'] => $data->tahun_ajaran,
-                ['semester'] => $data->semester,
-                ['status'] => $data->status,
-                ['nilai'] => $data->nilai,
-                ['kode_kelas'] => $data->kode_kelas,
-                ['nim'] => $data->nim
+        if(array_key_exists($data->detail_matkul, $json)){
+            $json[$data->detail_matkul] = [ 
+                ['kode_matkul'] => $data->kode_matkul,
+                ['kode_progdi'] => $data->kode_progdi,
+                ['detail_matkul'] => $data->detail_matkul
             ];
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);

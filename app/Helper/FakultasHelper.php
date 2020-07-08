@@ -43,11 +43,11 @@ class FakultasHelper
         if(array_key_exists($data->kode_fakultas, $json)){
             return "kode fakultas sudah ada";
         }else{
-            $mhs = [ 
+            $dt = [ 
                 'kode_fakultas' => $data->kode_fakultas,
                 'nama_fakultas' => $data->nama_fakultas
             ];
-            $obj = [$data->nim => $mhs];
+            $obj = [$data->nip => $dt];
             $json = $json + $obj;
             var_dump($json);
             $jsonData = json_encode($json);
@@ -61,11 +61,10 @@ class FakultasHelper
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
         if(array_key_exists($data->kode_fakultas, $json)){
-            $data = [ 
+            $json[$data->kode_fakultas] = [ 
                 'kode_fakultas' => $data->kode_fakultas,
                 'nama_fakultas' => $data->nama_fakultas
             ] ;
-            array_push($json, $data);
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return $data;

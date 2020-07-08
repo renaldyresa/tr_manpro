@@ -4,20 +4,23 @@
         "nama": "Mahasiswa 1",
         "tanggal_lahir": "01\/01\/1999",
         "no_hp": "0812345677",
-        "kode_progdi": "67"
+        "kode_progdi": "67",
+        "password" : "12345678"
     },
     "672017002": {
         "nim": "672017002",
         "nama": "berhasil update",
         "tanggal_lahir": "01\/10\/1999",
         "no_hp": "08232322",
-        "kode_progdi": "67"
+        "kode_progdi": "67",
+        "password" : "12345678"
     },
     "672017010": {
         "nim": "672017010",
         "nama": "Mahasiswa 10",
         "tanggal_lahir": "01\/10\/1999",
         "no_hp": "0823232323",
-        "kode_progdi": "67"
+        "kode_progdi": "67",
+        "password" : "12345678"
     }
 }

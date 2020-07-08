@@ -89,15 +89,15 @@ class MahasiswaHelper
     public static function delete($nim)
     {
         $path = app_path() . "/Database/".self::$table.".json"; 
-            $json = json_decode(file_get_contents($path), true);
-            if(array_key_exists($nim, $json)){
-                unset($json[$nim]);
-                $jsonData = json_encode($json);
-                file_put_contents($path, $jsonData);
-                return True;
-            }else{
-                return "nim tidak ditemukan";
-            }
+        $json = json_decode(file_get_contents($path), true);
+        if(array_key_exists($nim, $json)){
+            unset($json[$nim]);
+            $jsonData = json_encode($json);
+            file_put_contents($path, $jsonData);
+            return True;
+        }else{
+            return "nim tidak ditemukan";
+        }
     }
 
 }
