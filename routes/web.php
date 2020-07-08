@@ -25,10 +25,27 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', 'Admin\LoginController@logout');
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/', 'Admin\MahasiswaController@index');
-        Route::get('/insert', 'Admin\MahasiswaController@insert');
-        Route::get('/update', 'Admin\MahasiswaController@update');
+        Route::get('/tambah', 'Admin\MahasiswaController@add');
+        Route::post('/insert', 'Admin\MahasiswaController@insert');
+        Route::get('/edit/{nim}', 'Admin\MahasiswaController@edit');
+        Route::post('/update', 'Admin\MahasiswaController@update');
         Route::get('/delete/{nim}', 'Admin\MahasiswaController@delete');
-        Route::get('/{nim}', 'Admin\MahasiswaController@show');
+    });
+    Route::prefix('fakultas')->group(function () {
+        Route::get('/', 'Admin\FakultasController@index');
+        Route::get('/tambah', 'Admin\FakultasController@add');
+        Route::post('/insert', 'Admin\FakultasController@insert');
+        Route::get('/edit/{kode}', 'Admin\FakultasController@edit');
+        Route::post('/update', 'Admin\FakultasController@update');
+        Route::get('/delete/{kode}', 'Admin\FakultasController@delete');
+        Route::get('/{kode}', 'Admin\FakultasController@show');
+    });
+    Route::prefix('progdi')->group(function () {
+        Route::get('/tambah/{kode}', 'Admin\ProgdiController@add');
+        Route::post('/insert', 'Admin\ProgdiController@insert');
+        Route::get('/edit/{kode}', 'Admin\ProgdiController@edit');
+        Route::post('/update', 'Admin\ProgdiController@update');
+        Route::get('/delete/{kode_progdi}/{kode_fakultas}', 'Admin\ProgdiController@delete');
     });
 
 });

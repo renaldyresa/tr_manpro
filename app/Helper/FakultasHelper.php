@@ -30,7 +30,7 @@ class FakultasHelper
         if(array_key_exists($kode_fakultas, $json)){
             return $json[$kode_fakultas];
         }else{
-            return "data tidak ditemukan "; 
+            return false; 
         }
             
     }
@@ -41,13 +41,13 @@ class FakultasHelper
         $json = json_decode(file_get_contents($path), true);
 
         if(array_key_exists($data->kode_fakultas, $json)){
-            return "kode fakultas sudah ada";
+            return false;
         }else{
             $dt = [ 
                 'kode_fakultas' => $data->kode_fakultas,
                 'nama_fakultas' => $data->nama_fakultas
             ];
-            $obj = [$data->nip => $dt];
+            $obj = [$data->kode_fakultas => $dt];
             $json = $json + $obj;
             var_dump($json);
             $jsonData = json_encode($json);
@@ -69,7 +69,7 @@ class FakultasHelper
             file_put_contents($path, $jsonData);
             return $data;
         }else{
-            return "kode fakultas tidak ditemukan";
+            return false;
         }
     }
 
@@ -83,7 +83,7 @@ class FakultasHelper
             file_put_contents($path, $jsonData);
             return True;
         }else{
-            return "kode fakultas tidak ditemukan";
+            return false;
         }
     }
 

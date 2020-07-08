@@ -2,24 +2,28 @@
 
 namespace App\Helper ;
 
-use App\Entity\Fakultas ;
+use App\Entity\Progdi ;
 
 class ProgdiHelper
 {
-    private static $table = "Fakultas" ;
+    private static $table = "Progdi" ;
 
-    public static function selectAll()
+    public static function selectAll($kode)
     {
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
         $listdata = array();
-        foreach($json as $dt){
-            $data = new Fakultas(
-                $dt['kode_progdi'],
-                $dt['nama_progdi'],
-                $dt['kode_fakultas'] 
-            );
-            array_push($listdata, $data);
+        if($json != null){
+            foreach($json as $dt){
+                if($dt['kode_fakultas'] == $kode){
+                    $data = new Progdi(
+                        $dt['kode_progdi'],
+                        $dt['nama_progdi'],
+                        $dt['kode_fakultas'] 
+                    );
+                    array_push($listdata, $data);
+                }
+            }
         }
         return $listdata ;
     }
@@ -31,7 +35,7 @@ class ProgdiHelper
         if(array_key_exists($kode_progdi, $json)){
             return $json[$kode_progdi];
         }else{
-            return "data tidak ditemukan "; 
+            return false; 
         }
             
     }
@@ -40,16 +44,15 @@ class ProgdiHelper
     { 
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-
-        if(array_key_exists($data->kode_fakultas, $json)){
-            return "data sudah ada";
+        if(array_key_exists($data->kode_progdi, $json)){
+            return false;
         }else{
             $dt = [ 
                 'kode_progdi' => $data->kode_progdi,
                 'nama_progdi' => $data->nama_progdi,
                 'kode_fakultas' => $data->kode_fakultas
             ];
-            $obj = [$data->nim => $dt];
+            $obj = [$data->kode_progdi => $dt];
             $json = $json + $obj;
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
@@ -71,21 +74,21 @@ class ProgdiHelper
             file_put_contents($path, $jsonData);
             return $data;
         }else{
-            return "data tidak ditemukan";
+            return false;
         }
     }
 
-    public static function delete($id)
+    public static function delete($kode)
     {
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-        if(array_key_exists($id, $json)){
-            unset($json[$id]);
+        if(array_key_exists($kode, $json)){
+            unset($json[$kode]);
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return True;
         }else{
-            return "data tidak ditemukan";
+            return false;
         }
     }
 }

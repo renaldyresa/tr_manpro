@@ -19,39 +19,62 @@ class MahasiswaController extends Controller
     public function show($nim)
     {
         $data = MahasiswaModel::getById($nim);
-        var_dump($data);
         return view('admin/dashboard');
     }
 
-    public function insert()
+    public function add()
     {
-        $mhs = new Mahasiswa(
-            '672017001',
-            'Mahasiswa 1123',
-            '01/10/1999',
-            '0823232323',
-            '77'
-        );
-        $result = MahasiswaModel::insert($mhs);
-        var_dump($result);
+        return view('Admin/Mahasiswa/tambah');
     }
 
-    public function update()
+    public function insert(Request $request)
     {
         $mhs = new Mahasiswa(
-            '672017002',
-            'berhasil update',
-            '01/10/1999',
-            '08232322',
-            '67'
+            $request->input()['nim'],
+            $request->input()['nama'],
+            $request->input()['tgl_lahir'],
+            $request->input()['no_hp'],
+            $request->input()['progdi']
+        );
+        $result = MahasiswaModel::insert($mhs);
+        if($result){
+            return redirect('/admin/mahasiswa')->with(['success' => 'Nim '.$request->input()['nim'].' berhasil ditambahkan']);
+        }else{
+            return redirect('/admin/mahasiswa')->with(['error' => 'Nim sudah ada']);
+        }
+    }
+
+    public function edit($nim)
+    {
+        $result = MahasiswaModel::getById($nim);
+        $data['data'] = $result ;
+        return view('Admin/Mahasiswa/edit', $data);
+    }
+
+    public function update(Request $request)
+    {
+        $mhs = new Mahasiswa(
+            $request->input()['nim'],
+            $request->input()['nama'],
+            $request->input()['tgl_lahir'],
+            $request->input()['no_hp'],
+            $request->input()['progdi']
         );
         $result = MahasiswaModel::updateData($mhs);
-        var_dump($result);
+        if($result){
+            return redirect('/admin/mahasiswa')->with(['success' => 'Nim '.$request->input()['nim'].' berhasil diupdate']);
+        }else{
+            return redirect('/admin/mahasiswa')->with(['error' => 'Nim tidak ditemukan']);
+        }
     }
 
     public function delete($nim)
     {
         $result = MahasiswaModel::deleteData($nim);
-        var_dump($result);
+        if($result){
+            return redirect('/admin/mahasiswa')->with(['success' => 'Nim '.$nim.' berhasil dihapus']);
+        }else{
+            return redirect('/admin/mahasiswa')->with(['error' => 'Nim tidak ditemukan']);
+        }
     }
 }

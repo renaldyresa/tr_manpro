@@ -1,9 +1,9 @@
 @extends('admin/layout/main')
-@section('title', 'Data Mahasiswa')
+@section('title', 'Data Fakultas')
 @section('content')
 
 <div class="head-content">
-    <h5>Data Mahasiswa</h5>
+    <h5>Data Fakultas</h5>
     @if ($message = Session::get('error'))
     <div class="alert alert-danger alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -19,31 +19,25 @@
 </div>
 
 <div class="p-2">
-    <a href="{{URL::to('/admin/mahasiswa/tambah')}}"><button class="btn btn-sm btn-success">Tambah</button></a>
+    <a href="{{URL::to('/admin/fakultas/tambah')}}"><button class="btn btn-sm btn-success">Tambah</button></a>
 </div>
 
 <table class="table table-bordered">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">NIM</th>
+            <th scope="col">Kode</th>
             <th scope="col">Nama</th>
-            <th scope="col">Tanggal Lahir</th>
-            <th scope="col">No HP</th>
-            <th scope="col">Progdi</th>
             <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($data as $dt)
         <tr>
-            <td>{{ $dt->nim }}</td>
-            <td>{{ $dt->nama }}</td>
-            <td>{{ $dt->tanggal_lahir }}</td>
-            <td>{{ $dt->no_hp }}</td>
-            <td>{{ $dt->kode_progdi }}</td>
+            <td><a href="{{URL::to('/admin/fakultas/'.$dt->kode_fakultas)}}">{{ $dt->kode_fakultas }}</a></td>
+            <td>{{ $dt->nama_fakultas }}</td>
             <td class="aksi">
-                <a href="{{URL::to('/admin/mahasiswa/edit/'.$dt->nim)}}"><button class="btn btn-sm btn-info">Edit</button></a>
-                <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="{{URL::to('/admin/mahasiswa/delete/'.$dt->nim)}}">
+                <a href="{{URL::to('/admin/fakultas/edit/'.$dt->kode_fakultas)}}"><button class="btn btn-sm btn-info">Edit</button></a>
+                <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="{{URL::to('/admin/fakultas/delete/'.$dt->kode_fakultas)}}">
                     Delete
                 </button>
             </td>

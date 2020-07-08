@@ -1,0 +1,14 @@
+{
+    "001": {
+        "kode_fakultas": "001",
+        "nama_fakultas": "Fakultas Biologi"
+    },
+    "002": {
+        "kode_fakultas": "002",
+        "nama_fakultas": "Fakultas Teknologi Informasi"
+    },
+    "003": {
+        "kode_fakultas": "003",
+        "nama_fakultas": "Fakultas Pertanian"
+    }
+}

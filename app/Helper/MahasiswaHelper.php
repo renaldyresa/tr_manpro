@@ -47,7 +47,7 @@ class MahasiswaHelper
         $json = json_decode(file_get_contents($path), true);
 
         if(array_key_exists($data->nim, $json)){
-            return "nim sudah ada";
+            return false;
         }else{
             $mhs = [ 
                 'nim' => $data->nim,
@@ -55,6 +55,7 @@ class MahasiswaHelper
                 'tanggal_lahir' => $data->tanggal_lahir,
                 'no_hp' => $data->no_hp,
                 'kode_progdi' => $data->kode_progdi,
+                'password' => $data->nim,
             ];
             $obj = [$data->nim => $mhs];
             $json = $json + $obj;
@@ -69,7 +70,6 @@ class MahasiswaHelper
     {
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-        var_dump($json);
         if(array_key_exists($data->nim, $json)){
             $json[$data->nim] = [ 
                 'nim' => $data->nim,
@@ -82,7 +82,7 @@ class MahasiswaHelper
             file_put_contents($path, $jsonData);
             return $data;
         }else{
-            return "nim tidak ditemukan " . $data->nim;
+            return false;
         }
     }
 
@@ -96,7 +96,7 @@ class MahasiswaHelper
             file_put_contents($path, $jsonData);
             return True;
         }else{
-            return "nim tidak ditemukan";
+            return false;
         }
     }
 

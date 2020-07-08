@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{URL::to('/admin/fakultas')}}">
                                 <span data-feather="bar-chart-2"></span>
                                 Data Fakultas
                             </a>
@@ -85,6 +85,8 @@
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/bootstrap.bundle.js"></script>
+
+    @yield('javascript')
 
 </body>
 

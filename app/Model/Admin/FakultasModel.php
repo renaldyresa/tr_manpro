@@ -3,38 +3,37 @@
 namespace App\Model\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Helper\MahasiswaHelper;
-use App\Entity\Mahasiswa;
+use App\Helper\FakultasHelper;
 
-class MahasiswaModel extends Model
+class FakultasModel extends Model
 {
     public static function getAll()
     {
-        $result = MahasiswaHelper::selectAll();
+        $result = FakultasHelper::selectAll();
         return $result;
     }
 
     public static function getById($nim)
     {
-        $result = MahasiswaHelper::selectById($nim);
+        $result = FakultasHelper::selectById($nim);
         return $result;
     }
 
     public static function insert($data)
     {
-        $result = MahasiswaHelper::insert($data);
+        $result = FakultasHelper::insert($data);
         return $result;
     }
 
     public static function updateData($data)
     {
-        $result = MahasiswaHelper::update($data);
+        $result = FakultasHelper::update($data);
         return $result;
     }
 
     public static function deleteData($nim)
     {
-        $result = MahasiswaHelper::delete($nim);
+        $result = FakultasHelper::delete($nim);
         return $result;
     }
 }
