@@ -36,7 +36,7 @@ class MahasiswaHelper
         if(array_key_exists($nim, $json)){
             return $json[$nim];
         }else{
-            return "data tidak ditemukan "; 
+            return false ; 
         }
             
     }

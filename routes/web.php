@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Admin\DashboardController@index');
+Route::get('/login', 'Mahasiswa\LoginController@index');
+Route::post('/valid', 'Mahasiswa\LoginController@validator');
 
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\DashboardController@index');
+    Route::get('/login', 'Admin\LoginController@index');
+    Route::post('/valid', 'Admin\LoginController@validator');
+    Route::get('/logout', 'Admin\LoginController@logout');
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/', 'Admin\MahasiswaController@index');
         Route::get('/insert', 'Admin\MahasiswaController@insert');

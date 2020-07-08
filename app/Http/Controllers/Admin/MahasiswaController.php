@@ -13,7 +13,7 @@ class MahasiswaController extends Controller
     {
         $result = MahasiswaModel::getAll();
         $data['data'] = $result;
-        return view('admin/mahasiswa', $data);
+        return view('Admin/Mahasiswa/mahasiswa', $data);
     }
 
     public function show($nim)

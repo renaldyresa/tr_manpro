@@ -33,7 +33,7 @@ class AdminHelper
         if(array_key_exists($id, $json)){
             return $json[$id];
         }else{
-            return "data tidak ditemukan "; 
+            return false ; 
         }
             
     }

@@ -1,0 +1,10 @@
+{
+    "00001": {
+        "nip": "00001",
+        "nama": "admin 1",
+        "alamat": "Jln. Kemiri",
+        "email": "00001@gmail.com",
+        "no_hp": "0812345677",
+        "password" : "12345678"
+    }
+}

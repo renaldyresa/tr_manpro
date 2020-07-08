@@ -1,0 +1,11 @@
+.content-login {
+	position: fixed;
+	top: 30%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate(-50%, -50%);
+}
+
+.title-login {
+    text-align: center;
+}
