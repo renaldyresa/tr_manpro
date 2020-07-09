@@ -6,10 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\ProgdiModel;
 use App\Entity\Progdi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class ProgdiController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Session::get("login") == false && empty(Session::get('login'))) {
+                Redirect::to('admin/login')->send();
+            }
+            return $next($request);
+        });
+    }
 
     public function add($kode)
     {

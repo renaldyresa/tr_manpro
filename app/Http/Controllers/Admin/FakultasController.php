@@ -7,9 +7,21 @@ use App\Model\Admin\FakultasModel;
 use App\Model\Admin\ProgdiModel;
 use App\Entity\Fakultas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class FakultasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Session::get("login") == false && empty(Session::get('login'))) {
+                Redirect::to('admin/login')->send();
+            }
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         $result = FakultasModel::getAll();
