@@ -1,4 +1,4 @@
-@extends('mahasiswa/layout/main')
+@extends('dosen/layout/main')
 @section('title', 'Dashboard')
 @section('content')
 
