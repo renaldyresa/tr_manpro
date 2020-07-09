@@ -6,9 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\MahasiswaModel;
 use App\Entity\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class MahasiswaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Session::get("login") == false && empty(Session::get('login'))) {
+                Redirect::to('admin/login')->send();
+            }
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         $result = MahasiswaModel::getAll();
