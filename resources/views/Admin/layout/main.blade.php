@@ -38,31 +38,26 @@
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/admin')}}">
-                                <span data-feather="home"></span>
                                 Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/admin/mahasiswa')}}">
-                                <span data-feather="file"></span>
                                 Data Mahasiswa
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart"></span>
+                            <a class="nav-link" href="{{URL::to('/admin/dosen')}}">
                                 Data Dosen
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
                                 Data Matakuliah
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/admin/fakultas')}}">
-                                <span data-feather="bar-chart-2"></span>
                                 Data Fakultas
                             </a>
                         </li>
