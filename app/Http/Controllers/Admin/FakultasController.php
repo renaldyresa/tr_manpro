@@ -45,7 +45,7 @@ class FakultasController extends Controller
     {
         $dt = new Fakultas(
             $request->input()['kode'],
-            $request->input()['nama'],
+            $request->input()['nama']
         );
         $result = FakultasModel::insert($dt);
         if($result){
@@ -66,7 +66,7 @@ class FakultasController extends Controller
     {
         $dt = new Fakultas(
             $request->input()['kode'],
-            $request->input()['nama'],
+            $request->input()['nama']
         );
         $result = FakultasModel::updateData($dt);
         if($result){

@@ -19,7 +19,7 @@ class DosenHelper
                 $dt['nama'],
                 $dt['alamat'],
                 $dt['email'],
-                $dt['no_hp'],
+                $dt['no_hp']
             );
             array_push($listdata, $data);
         }
