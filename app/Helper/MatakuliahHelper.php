@@ -16,8 +16,9 @@ class MatakuliahHelper
         foreach($json as $dt){
             $data = new Matakuliah(
                 $dt['kode_matkul'],
-                $dt['nama'],
-                $dt['jumlah_sks']
+                $dt['nama_matkul'],
+                $dt['jumlah_sks'],
+                $dt['jumlah_sks_bayar']
             );
             array_push($listdata, $data);
         }
@@ -31,7 +32,7 @@ class MatakuliahHelper
         if(array_key_exists($id, $json)){
             return $json[$id];
         }else{
-            return "data tidak ditemukan "; 
+            return false; 
         }
             
     }
@@ -42,16 +43,16 @@ class MatakuliahHelper
         $json = json_decode(file_get_contents($path), true);
 
         if(array_key_exists($data->kode_matkul, $json)){
-            return "data sudah ada";
+            return false;
         }else{
             $dt = [ 
-                ['kode_matkul'] => $data->kode_matkul,
-                ['nama'] => $data->nama,
-                ['jumlah_sks'] => $data->jumlah_sks
+                'kode_matkul' => $data->kode_matkul,
+                'nama_matkul' => $data->nama_matkul,
+                'jumlah_sks' => $data->jumlah_sks,
+                'jumlah_sks_bayar' => $data->jumlah_sks_bayar
             ];
             $obj = [$data->kode_matkul => $dt];
             $json = $json + $obj;
-            var_dump($json);
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return $data;
@@ -64,15 +65,16 @@ class MatakuliahHelper
         $json = json_decode(file_get_contents($path), true);
         if(array_key_exists($data->kode_matkul, $json)){
             $json[$data->kode_matkul] = [ 
-                ['kode_matkul'] => $data->kode_matkul,
-                ['nama'] => $data->nama,
-                ['jumlah_sks'] => $data->jumlah_sks
+                'kode_matkul' => $data->kode_matkul,
+                'nama_matkul' => $data->nama_matkul,
+                'jumlah_sks' => $data->jumlah_sks,
+                'jumlah_sks_bayar' => $data->jumlah_sks_bayar
             ];
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return $data;
         }else{
-            return "data tidak ditemukan";
+            return false;
         }
     }
 
@@ -86,7 +88,7 @@ class MatakuliahHelper
             file_put_contents($path, $jsonData);
             return True;
         }else{
-            return "data tidak ditemukan";
+            return false;
         }
     }
 

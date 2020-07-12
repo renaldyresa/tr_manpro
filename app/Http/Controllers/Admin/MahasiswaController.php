@@ -100,6 +100,9 @@ class MahasiswaController extends Controller
     public function edit($nim)
     {
         $result = MahasiswaModel::getById($nim);
+        $result['kode_fakultas'] = MahasiswaModel::getKodeFakultas($result['kode_progdi']);
+        $result_fakul = FakultasModel::getAll();
+        $data['data_fakultas'] = $result_fakul;
         $data['data'] = $result ;
         return view('Admin/Mahasiswa/edit', $data);
     }

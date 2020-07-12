@@ -4,6 +4,7 @@ namespace App\Model\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Helper\MahasiswaHelper;
+use App\Helper\ProgdiHelper;
 use App\Entity\Mahasiswa;
 
 class MahasiswaModel extends Model
@@ -81,6 +82,12 @@ class MahasiswaModel extends Model
     {
         $result = MahasiswaHelper::selectById($nim);
         return $result;
+    }
+
+    public static function getKodeFakultas($kode)
+    {
+        $result = ProgdiHelper::selectById($kode);
+        return $result['kode_fakultas'];
     }
 
     public static function insert($data)

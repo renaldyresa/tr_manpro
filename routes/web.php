@@ -58,5 +58,13 @@ Route::prefix('admin')->group(function () {
         Route::post('/update', 'Admin\DosenController@update');
         Route::get('/delete/{kode}', 'Admin\DosenController@delete');
     });
+    Route::prefix('matakuliah')->group(function () {
+        Route::get('/', 'Admin\MatakuliahController@index');
+        Route::get('/tambah', 'Admin\MatakuliahController@add');
+        Route::post('/insert', 'Admin\MatakuliahController@insert');
+        Route::get('/edit/{kode}', 'Admin\MatakuliahController@edit');
+        Route::post('/update', 'Admin\MatakuliahController@update');
+        Route::get('/delete/{kode}', 'Admin\MatakuliahController@delete');
+    });
 });
 

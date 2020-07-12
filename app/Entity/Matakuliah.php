@@ -5,14 +5,16 @@ namespace App\Entity ;
 class Matakuliah
 {
     private $kode_matkul;
-    private $nama;
+    private $nama_matkul;
     private $jumlah_sks;
+    private $jumlah_sks_bayar;
 
-    function __construct($kode_matkul, $nama, $jumlah_sks)
+    function __construct($kode_matkul, $nama, $jumlah_sks, $jumlah_sks_bayar)
     {
         $this->kode_matkul = $kode_matkul ;
-        $this->nama = $nama ;
+        $this->nama_matkul = $nama ;
         $this->jumlah_sks = $jumlah_sks ;
+        $this->jumlah_sks_bayar = $jumlah_sks_bayar;
     }
 
     public function __get($property)

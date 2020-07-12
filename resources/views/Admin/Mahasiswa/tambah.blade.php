@@ -47,7 +47,7 @@
         <div class="form-group row">
             <label for="colFormLabel" class="col-sm-2 col-form-label">Progdi</label>
             <div class="col-sm-10">
-                <select class="form-control" name="progdi" id="progdi" onchange="getProgdi(this)">
+                <select class="form-control" name="progdi" id="progdi">
                     <option value="none">---------</option>
                 </select>
             </div>
