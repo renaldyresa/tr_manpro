@@ -30,6 +30,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/edit/{nim}', 'Admin\MahasiswaController@edit');
         Route::post('/update', 'Admin\MahasiswaController@update');
         Route::get('/delete/{nim}', 'Admin\MahasiswaController@delete');
+        Route::get('/getProgdi/{kode}', 'Admin\MahasiswaController@getProgdi');
+        Route::get('/pagination/{page}', 'Admin\MahasiswaController@pagination');
+        Route::post('/search', 'Admin\MahasiswaController@search');
     });
     Route::prefix('fakultas')->group(function () {
         Route::get('/', 'Admin\FakultasController@index');

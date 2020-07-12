@@ -14,6 +14,69 @@ class MahasiswaModel extends Model
         return $result;
     }
 
+    public static function countAll()
+    {
+        $result = MahasiswaHelper::selectAll();
+        return count($result);
+    }
+
+    public static function fetch_data_search($opsi, $value)
+    {
+        $result = MahasiswaHelper::selectAll();
+        $data = array();
+        $value = strtolower($value);
+        for ($i = 0; $i< count($result) ; $i++){
+            if($opsi == 'nim'){
+                if(strpos(strtolower($result[$i]->nim), $value) !== false){
+                    $item = [
+                        'nim' => $result[$i]->nim,
+                        'nama' => $result[$i]->nama,
+                        'tanggal_lahir' => $result[$i]->tanggal_lahir,
+                        'no_hp' => $result[$i]->no_hp,
+                        'kode_progdi' => $result[$i]->kode_progdi 
+                    ];
+                    array_push($data, $item);
+                }
+            }else if($opsi == 'nama'){
+                if(strpos(strtolower($result[$i]->nama), $value) !== false){
+                    $item = [
+                        'nim' => $result[$i]->nim,
+                        'nama' => $result[$i]->nama,
+                        'tanggal_lahir' => $result[$i]->tanggal_lahir,
+                        'no_hp' => $result[$i]->no_hp,
+                        'kode_progdi' => $result[$i]->kode_progdi 
+                    ];
+                    array_push($data, $item);
+                }
+            }
+        }
+        return $data;
+    }
+
+    public static function fetch_data($limit, $start)
+    {
+        $result = MahasiswaHelper::selectAll();
+        $end = 0;
+        $total = count($result);
+        if($total > ($limit + $start)){
+            $end = $limit + $start ;
+        }else{
+            $end = $total ;
+        }
+        $data = array();
+        for ($i = $start; $i<$end ; $i++){
+            $item = [
+                'nim' => $result[$i]->nim,
+                'nama' => $result[$i]->nama,
+                'tanggal_lahir' => $result[$i]->tanggal_lahir,
+                'no_hp' => $result[$i]->no_hp,
+                'kode_progdi' => $result[$i]->kode_progdi 
+            ];
+            array_push($data, $item);
+        }
+        return $data;
+    }
+
     public static function getById($nim)
     {
         $result = MahasiswaHelper::selectById($nim);
