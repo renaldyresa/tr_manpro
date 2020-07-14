@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="head-content pb-2">
-    <h5>Detail Matakuliah / {{$data_fakultas['nama_fakultas']}}</h5>
+    <h5><a href="{{URL::to('/admin/detailmatkul')}}">Detail Matakuliah</a> / {{$data_fakultas['nama_fakultas']}}</h5>
 </div>
 
 <table class="table table-bordered">

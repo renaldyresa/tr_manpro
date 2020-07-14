@@ -79,7 +79,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'Admin\DetailMatkulController@index');
         Route::get('/tambah/{kode_f}/{kode_p}', 'Admin\DetailMatkulController@add');
         Route::post('/insert', 'Admin\DetailMatkulController@insert');
-        Route::get('/delete/{kode_f}/{kode_p}/{kode_m}', 'Admin\DetailMatkulController@delete');
+        Route::get('/delete/{kode_f}/{kode_p}/{kode_d}', 'Admin\DetailMatkulController@delete');
         Route::get('/{kode}', 'Admin\DetailMatkulController@show');
         Route::get('/{kode_f}/{kode_p}', 'Admin\DetailMatkulController@showMatkul');
     });

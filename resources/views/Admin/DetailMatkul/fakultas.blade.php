@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="head-content">
-    <h5>Detail Matakuliah / Fakultas</h5>
+    <h5><a href="{{URL::to('/admin/detailmatkul')}}">Detail Matakuliah</a> / Fakultas</h5>
     @if ($message = Session::get('error'))
     <div class="alert alert-danger alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>

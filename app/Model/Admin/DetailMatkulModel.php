@@ -14,6 +14,7 @@ class DetailMatkulModel extends Model
         $res = array();
         foreach($result as $r){
             $dt = [
+                'detail_matkul' => $r->detail_matkul,
                 'kode_matkul' => $r->kode_matkul,
                 'nama_matkul' => MatakuliahHelper::selectById($r->kode_matkul)['nama_matkul']
             ];

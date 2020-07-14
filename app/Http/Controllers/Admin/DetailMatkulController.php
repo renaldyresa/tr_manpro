@@ -73,11 +73,11 @@ class DetailMatkulController extends Controller
         }
     }
 
-    public function delete($kode_f, $kode_p, $kode_m)
+    public function delete($kode_f, $kode_p, $kode_d)
     {
-        $result = DetailMatkulModel::deleteData($kode_p.'-'.$kode_m);
+        $result = DetailMatkulModel::deleteData($kode_d);
         if($result){
-            return redirect('/admin/detailmatkul/'.$kode_f.'/'.$kode_p)->with(['success' => $kode_m.' berhasil dihapus']);
+            return redirect('/admin/detailmatkul/'.$kode_f.'/'.$kode_p)->with(['success' => 'Matakuliah berhasil dihapus']);
         }else{
             return redirect('/admin/detailmatkul/'.$kode_f.'/'.$kode_p)->with(['error' => 'Data tidak ditemukan']);
         }

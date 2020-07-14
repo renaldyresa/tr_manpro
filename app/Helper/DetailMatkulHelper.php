@@ -43,15 +43,17 @@ class DetailMatkulHelper
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
         $autoJson = json_decode(file_get_contents(app_path() . "/Database/Auto.json"), true);
-        if(array_key_exists($data['kode_progdi'].'-'.$data['kode_matkul'],$json)){
-            return false ;
+        foreach($json as $dt){
+            if($dt['kode_matkul'] == $data['kode_matkul'] && $dt['kode_progdi'] == $data['kode_progdi']){
+                return false ;
+            }
         }
         $dt = [ 
             'detail_matkul' => $autoJson['detailmatkul'],
             'kode_matkul' => $data['kode_matkul'],
             'kode_progdi' => $data['kode_progdi']
         ];
-        $obj = [$data['kode_progdi'].'-'.$data['kode_matkul'] => $dt];
+        $obj = [$autoJson['detailmatkul'] => $dt];
         $json = $json + $obj;
         $jsonData = json_encode($json);
         file_put_contents($path, $jsonData);
