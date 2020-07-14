@@ -1,1 +1,14 @@
-{"IN111":{"kode_matkul":"IN111","nama_matkul":"Matematika","jumlah_sks":"6","jumlah_sks_bayar":"7"},"IN112":{"kode_matkul":"IN112","nama_matkul":"PTI","jumlah_sks":"3","jumlah_sks_bayar":"4"},"IN113":{"kode_matkul":"IN113","nama_matkul":"Agama","jumlah_sks":"2","jumlah_sks_bayar":"2"}}
+{
+    "MTK": {
+        "kode_matkul": "MTK",
+        "nama_matkul": "Matematika",
+        "jumlah_sks": "4",
+        "jumlah_sks_bayar": "4"
+    },
+    "AGM": {
+        "kode_matkul": "AGM",
+        "nama_matkul": "Agama",
+        "jumlah_sks": "3",
+        "jumlah_sks_bayar": "3"
+    }
+}
