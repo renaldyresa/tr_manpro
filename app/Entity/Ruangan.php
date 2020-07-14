@@ -27,7 +27,6 @@ class Ruangan
         if (property_exists($this, $property)) {
             $this->$property = $value;
         }
-
         return $this;
     }
 }

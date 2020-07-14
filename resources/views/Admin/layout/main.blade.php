@@ -12,6 +12,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/dashboard.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
+    @yield('css')
 </head>
 
 <body>
@@ -23,7 +24,7 @@
         </button>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
-                <span class="pr-3" style="color: bisque;"> {{Session::get('nama')}} 
+                <span class="pr-3" style="color: bisque;"> {{Session::get('nama')}}
                     <a class="pl-2" style="color: bisque; text-decoration: none;" href="{{URL::to('/admin/logout')}}">Sign out</a>
                 </span>
             </li>
@@ -36,11 +37,22 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="sidebar-sticky pt-3">
                     <ul class="nav flex-column">
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-muted">
+                            <span>MENU</span>
+                        </h6>
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/admin')}}">
                                 Dashboard
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/admin/detailmatkul')}}">
+                                Detail Matakuliah
+                            </a>
+                        </li>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>MASTER DATA</span>
+                        </h6>
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/admin/mahasiswa')}}">
                                 Data Mahasiswa
@@ -59,6 +71,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{URL::to('/admin/fakultas')}}">
                                 Data Fakultas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{URL::to('/admin/ruangan')}}">
+                                Data Ruangan
                             </a>
                         </li>
                     </ul>

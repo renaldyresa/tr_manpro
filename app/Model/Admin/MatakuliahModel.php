@@ -13,6 +13,23 @@ class MatakuliahModel extends Model
         return $result;
     }
 
+    public static function auto($keyword)
+    {
+        $result = MatakuliahHelper::selectAll();
+        $keyword = strtolower($keyword);
+        $data = array();
+        foreach($result as $res){
+            if(strpos(strtolower($res->kode_matkul), $keyword) || strpos(strtolower($res->nama_matkul), $keyword)){
+                $item = [
+                    'kode_matkul' => $res->kode_matkul,
+                    'nama_matkul' => $res->nama_matkul
+                ];
+                array_push($data, $item);
+            }
+        }
+        return $data;
+    }
+
     public static function getById($nip)
     {
         $result = MatakuliahHelper::selectById($nip);

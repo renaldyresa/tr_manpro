@@ -31,7 +31,7 @@ class RuanganHelper
         if(array_key_exists($id, $json)){
             return $json[$id];
         }else{
-            return "data tidak ditemukan "; 
+            return false; 
         }
             
     }
@@ -42,16 +42,15 @@ class RuanganHelper
         $json = json_decode(file_get_contents($path), true);
 
         if(array_key_exists($data->kode_ruangan, $json)){
-            return "data sudah ada";
+            return false;
         }else{
             $dt = [ 
-                ['kode_ruangan'] => $data->kode_ruangan,
-                ['kapasistas'] => $data->kapasistas,
-                ['lokasi'] => $data->lokasi
+                'kode_ruangan' => $data->kode_ruangan,
+                'kapasitas' => $data->kapasitas,
+                'lokasi' => $data->lokasi
             ];
             $obj = [$data->kode_ruangan => $dt];
             $json = $json + $obj;
-            var_dump($json);
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return $data;
@@ -64,15 +63,15 @@ class RuanganHelper
         $json = json_decode(file_get_contents($path), true);
         if(array_key_exists($data->kode_ruangan, $json)){
             $json[$data->kode_ruangan] = [ 
-                ['kode_ruangan'] => $data->kode_ruangan,
-                ['kapasistas'] => $data->kapasistas,
-                ['lokasi'] => $data->lokasi
+                'kode_ruangan' => $data->kode_ruangan,
+                'kapasitas' => $data->kapasitas,
+                'lokasi' => $data->lokasi
             ];
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return $data;
         }else{
-            return "data tidak ditemukan";
+            return false;
         }
     }
 
@@ -86,7 +85,7 @@ class RuanganHelper
             file_put_contents($path, $jsonData);
             return True;
         }else{
-            return "data tidak ditemukan";
+            return false;
         }
     }
 

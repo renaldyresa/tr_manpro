@@ -8,7 +8,7 @@ class DetailMatakuliah
     private $kode_progdi;
     private $detail_matkul;
 
-    function __construct($kode_matkul, $kode_progdi, $detail_matkul)
+    function __construct( $detail_matkul, $kode_matkul, $kode_progdi)
     {
         $this->kode_matkul = $kode_matkul ;
         $this->kode_progdi = $kode_progdi ;

@@ -66,5 +66,21 @@ Route::prefix('admin')->group(function () {
         Route::post('/update', 'Admin\MatakuliahController@update');
         Route::get('/delete/{kode}', 'Admin\MatakuliahController@delete');
     });
-});
+    Route::prefix('ruangan')->group(function () {
+        Route::get('/', 'Admin\RuanganController@index');
+        Route::get('/tambah', 'Admin\RuanganController@add');
+        Route::post('/insert', 'Admin\RuanganController@insert');
+        Route::get('/edit/{kode}', 'Admin\RuanganController@edit');
+        Route::post('/update', 'Admin\RuanganController@update');
+        Route::get('/delete/{kode}', 'Admin\RuanganController@delete');
+    });
 
+    Route::prefix('detailmatkul')->group(function () {
+        Route::get('/', 'Admin\DetailMatkulController@index');
+        Route::get('/tambah/{kode_f}/{kode_p}', 'Admin\DetailMatkulController@add');
+        Route::post('/insert', 'Admin\DetailMatkulController@insert');
+        Route::get('/delete/{kode_f}/{kode_p}/{kode_m}', 'Admin\DetailMatkulController@delete');
+        Route::get('/{kode}', 'Admin\DetailMatkulController@show');
+        Route::get('/{kode_f}/{kode_p}', 'Admin\DetailMatkulController@showMatkul');
+    });
+});

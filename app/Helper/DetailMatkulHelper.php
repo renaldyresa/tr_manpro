@@ -4,22 +4,24 @@ namespace App\Helper ;
 
 use App\Entity\DetailMatakuliah;
 
-class DetailMatakuliahHelper
+class DetailMatkulHelper
 {
     private static $table = "DetailMatakuliah" ;
 
-    public static function selectAll()
+    public static function selectAll($kode)
     {
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
         $listdata = array();
         foreach($json as $dt){
-            $data = new DetailMatakuliah(
-                $dt['kode_matkul'],
-                $dt['kode_progdi'],
-                $dt['detail_matkul']
-            );
-            array_push($listdata, $data);
+            if($dt['kode_progdi'] == $kode){
+                $data = new DetailMatakuliah(
+                    $dt['detail_matkul'],
+                    $dt['kode_matkul'],
+                    $dt['kode_progdi']
+                );
+                array_push($listdata, $data);
+            }
         }
         return $listdata ;
     }
@@ -31,7 +33,7 @@ class DetailMatakuliahHelper
         if(array_key_exists($id, $json)){
             return $json[$id];
         }else{
-            return "data tidak ditemukan "; 
+            return false; 
         }
             
     }
@@ -40,23 +42,24 @@ class DetailMatakuliahHelper
     { 
         $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-
-        if(array_key_exists($data->detail_matkul, $json)){
-            return "data sudah ada";
-        }else{
-            $dt = [ 
-                ['kode_matkul'] => $data->kode_matkul,
-                ['kode_progdi'] => $data->kode_progdi,
-                ['detail_matkul'] => $data->detail_matkul
-            ];
-            $obj = [$data->detail_matkul => $dt];
-            $json = $json + $obj;
-            var_dump($json);
-            $jsonData = json_encode($json);
-            file_put_contents($path, $jsonData);
-            return $data;
+        $autoJson = json_decode(file_get_contents(app_path() . "/Database/Auto.json"), true);
+        if(array_key_exists($data['kode_progdi'].'-'.$data['kode_matkul'],$json)){
+            return false ;
         }
-    }
+        $dt = [ 
+            'detail_matkul' => $autoJson['detailmatkul'],
+            'kode_matkul' => $data['kode_matkul'],
+            'kode_progdi' => $data['kode_progdi']
+        ];
+        $obj = [$data['kode_progdi'].'-'.$data['kode_matkul'] => $dt];
+        $json = $json + $obj;
+        $jsonData = json_encode($json);
+        file_put_contents($path, $jsonData);
+        $autoJson['detailmatkul'] = (int)$autoJson['detailmatkul'] + 1 ;
+        $jsonDataAuto = json_encode($autoJson);
+        file_put_contents(app_path() . "/Database/Auto.json", $jsonDataAuto);
+        return $data;
+}
 
     public static function update($data)
     {
@@ -86,7 +89,7 @@ class DetailMatakuliahHelper
             file_put_contents($path, $jsonData);
             return True;
         }else{
-            return "data tidak ditemukan";
+            return false;
         }
     }
 
