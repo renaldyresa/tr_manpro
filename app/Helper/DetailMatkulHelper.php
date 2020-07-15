@@ -77,7 +77,7 @@ class DetailMatkulHelper
             file_put_contents($path, $jsonData);
             return $data;
         }else{
-            return "data tidak ditemukan";
+            return false;
         }
     }
 

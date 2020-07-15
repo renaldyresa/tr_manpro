@@ -23,9 +23,9 @@
                     @endforeach
                 </select>
             </div>
-            <input type="hidden" name="kode_fakultas" class="form-control" id="colFormLabel" value="{{$kode_fakultas}}">
-            <input type="hidden" name="kode_progdi" class="form-control" id="colFormLabel" value="{{$kode_progdi}}">
         </div>
+        <input type="hidden" name="kode_fakultas" class="form-control" id="colFormLabel" value="{{$kode_fakultas}}">
+        <input type="hidden" name="kode_progdi" class="form-control" id="colFormLabel" value="{{$kode_progdi}}">
         <div class="float-right">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

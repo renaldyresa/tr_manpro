@@ -23,9 +23,9 @@ class DetailMatkulModel extends Model
         return $res;
     }
 
-    public static function getById($nip)
+    public static function getById($id)
     {
-        $result = DetailMatkulHelper::selectById($nip);
+        $result = DetailMatkulHelper::selectById($id);
         return $result;
     }
 

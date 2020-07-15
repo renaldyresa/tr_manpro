@@ -34,7 +34,7 @@
     <tbody>
         @foreach ($data as $dt)
         <tr>
-            <td>{{ $dt['kode_matkul'] }}</td>
+            <td><a href="{{URL::to('/admin/detailmatkul/'.$data_fakultas['kode_fakultas'].'/'.$data_progdi['kode_progdi'].'/'.$dt['detail_matkul'])}}">{{ $dt['kode_matkul'] }}</a></td>
             <td>{{ $dt['nama_matkul'] }}</td>
             <td class="aksi">
                 <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="{{URL::to('/admin/detailmatkul/delete/'.$data_fakultas['kode_fakultas'].'/'.$data_progdi['kode_progdi'].'/'.$dt['detail_matkul'])}}">

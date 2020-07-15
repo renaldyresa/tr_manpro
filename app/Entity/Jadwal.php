@@ -10,9 +10,8 @@ class Jadwal
     private $jam_keluar;
     private $kode_kelas;
     private $kode_ruangan ;
-    private $nip;
 
-    function __construct($id_jadwal, $hari, $jam_masuk, $jam_keluar, $kode_kelas, $kode_ruangan, $nip)
+    function __construct($id_jadwal, $hari, $jam_masuk, $jam_keluar, $kode_kelas, $kode_ruangan)
     {
         $this->id_jadwal = $id_jadwal ;
         $this->hari = $hari ;
@@ -20,7 +19,6 @@ class Jadwal
         $this->jam_keluar = $jam_keluar ;
         $this->kode_kelas = $kode_kelas ;
         $this->kode_ruangan = $kode_ruangan ;
-        $this->nip = $nip ;
     }
 
     public function __get($property)

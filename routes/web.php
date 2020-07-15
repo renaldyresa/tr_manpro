@@ -79,8 +79,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'Admin\DetailMatkulController@index');
         Route::get('/tambah/{kode_f}/{kode_p}', 'Admin\DetailMatkulController@add');
         Route::post('/insert', 'Admin\DetailMatkulController@insert');
+        Route::post('/insertkelas', 'Admin\KelasController@insert');
+        Route::post('/insertjadwal', 'Admin\JadwalController@insert');
         Route::get('/delete/{kode_f}/{kode_p}/{kode_d}', 'Admin\DetailMatkulController@delete');
+        Route::get('/deletekelas/{kode_f}/{kode_p}/{kode_d}/{kode_k}', 'Admin\KelasController@delete');
+        Route::get('/deletejadwal/{kode_f}/{kode_p}/{kode_d}/{kode_k}/{kode_j}', 'Admin\JadwalController@delete');
         Route::get('/{kode}', 'Admin\DetailMatkulController@show');
         Route::get('/{kode_f}/{kode_p}', 'Admin\DetailMatkulController@showMatkul');
+        Route::get('/{kode_f}/{kode_p}/{kode_d}', 'Admin\KelasController@index');
+        Route::get('/{kode_f}/{kode_p}/{kode_d}/tambah', 'Admin\KelasController@add');
+        Route::get('/{kode_f}/{kode_p}/{kode_d}/{kode_k}', 'Admin\JadwalController@index');
+        Route::get('/{kode_f}/{kode_p}/{kode_d}/{kode_k}/tambah', 'Admin\JadwalController@add');
     });
 });

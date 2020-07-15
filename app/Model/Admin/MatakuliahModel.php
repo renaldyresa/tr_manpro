@@ -30,9 +30,9 @@ class MatakuliahModel extends Model
         return $data;
     }
 
-    public static function getById($nip)
+    public static function getById($kode_matkul)
     {
-        $result = MatakuliahHelper::selectById($nip);
+        $result = MatakuliahHelper::selectById($kode_matkul);
         return $result;
     }
 
