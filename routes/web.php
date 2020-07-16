@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Mahasiswa\DashboardController@index');;
-
+Route::get('/hasil', 'Mahasiswa\HasilController@index');
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\DashboardController@index');
