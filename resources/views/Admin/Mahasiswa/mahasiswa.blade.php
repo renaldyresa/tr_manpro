@@ -146,8 +146,8 @@
                             <td>' + item.no_hp + '</td>\
                             <td>' + item.kode_progdi + '</td>\
                             <td class="aksi">\
-                                <a href="{{URL::to("/admin/mahasiswa/edit")}}/'+item.nim+'"><button class="btn btn-sm btn-info">Edit</button></a>\
-                                <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="{{URL::to("/admin/mahasiswa/delete")}}/'+item.nim+'">\
+                                <a href="{{URL::to("/admin/mahasiswa/edit")}}/' + item.nim + '"><button class="btn btn-sm btn-info">Edit</button></a>\
+                                <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="{{URL::to("/admin/mahasiswa/delete")}}/' + item.nim + '">\
                                     Delete\
                                 </button>\
                             </td>\
@@ -160,33 +160,33 @@
     load_data(1);
 
     function load_search_data() {
-            let e_opsi = document.getElementById("opsi_search") ;
-            let opsi = e_opsi.options[e_opsi.selectedIndex].value;
-            let text = $('#txt_search').val();
-            if (text == "" || text == null) {
-                load_data(1);
-                return;
-            }
-            document.getElementById('loading').style.display = "block";
-            $.ajax({
-                url: "{{URL::to('/admin/mahasiswa/search')}}",
-                method: "POST",
-                dataType: "json",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    text: text,
-                    opsi: opsi
-                },
-                success: function(data) {
-                    document.getElementById('loading').style.display = "none";
-                    document.getElementById('layout_pagination').style.display = "none";
-                    document.getElementById('table-body').innerHTML = loadTable(data.data_table);
-                },
-                error: function() {
-
-                }
-            });
+        let e_opsi = document.getElementById("opsi_search");
+        let opsi = e_opsi.options[e_opsi.selectedIndex].value;
+        let text = $('#txt_search').val();
+        if (text == "" || text == null) {
+            load_data(1);
+            return;
         }
+        document.getElementById('loading').style.display = "block";
+        $.ajax({
+            url: "{{URL::to('/admin/mahasiswa/search')}}",
+            method: "POST",
+            dataType: "json",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                text: text,
+                opsi: opsi
+            },
+            success: function(data) {
+                document.getElementById('loading').style.display = "none";
+                document.getElementById('layout_pagination').style.display = "none";
+                document.getElementById('table-body').innerHTML = loadTable(data.data_table);
+            },
+            error: function() {
+
+            }
+        });
+    }
 </script>
 
 @endsection
