@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', 'Mahasiswa\DashboardController@index');;
 Route::get('/hasil', 'Mahasiswa\HasilController@index');
+=======
+Route::get('/', 'Admin\DashboardController@index');
+Route::get('/login', 'Mahasiswa\LoginController@index');
+Route::post('/valid', 'Mahasiswa\LoginController@validator');
+
+>>>>>>> parent of 841ee2c... update mahasiswa
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\DashboardController@index');
