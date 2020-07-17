@@ -1,4 +1,4 @@
-@extends('dosen/layout/main')
+@extends('admin/layout/main')
 @section('title', 'Dashboard')
 @section('content')
 
@@ -15,12 +15,13 @@
             var bulan = tgl.getMonth();
             var tahun = tgl.getFullYear();
             tanggallengkap = namahari[hari] + ", " + tanggal + " " + namabulan[bulan] + " " + tahun;
-            document.write('<p id="nav-date">' + tanggallengkap + ' | {{Session::get('nip')}} - {{Session::get('nama')}} - Universitas Kristen Satya Wacana' + '</p>');
+            document.write('<p id="nav-date">' + tanggallengkap + ' | {{Session::get("nip")}} - {{Session::get("nama")}} - Universitas Kristen Satya Wacana' + '</p>');
         </script>
 </marquee>
 
 <center>
-<h5 width="80%" style="";>Selamat Datang </h5>
+<h5 width="80%" >Selamat Datang </h5>
 </center>
+
 
 @endsection
