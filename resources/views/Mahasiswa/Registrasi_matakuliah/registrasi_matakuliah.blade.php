@@ -2,6 +2,9 @@
 @section('title', 'Dashboard')
 @section('content')
 
+@extends('mahasiswa/layout/main')
+@section('title', 'Dashboard')
+@section('content')
 
 <div class="head-content">
     <h5>Hasil Studi</h5>
@@ -31,5 +34,7 @@
 
     </tbody>
 </table>
+
+@endsection
 
 @endsection
