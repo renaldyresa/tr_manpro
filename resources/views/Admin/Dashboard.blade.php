@@ -3,6 +3,7 @@
 @section('content')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <marquee behavior="" direction="">
         <script>
             var tanggallengkap = new String();
@@ -23,6 +24,8 @@
 <center>
 <h5 width="80%" style="";>Selamat Datang </h5>
 </center>
+=======
+>>>>>>> parent of 841ee2c... update mahasiswa
 =======
 >>>>>>> parent of 841ee2c... update mahasiswa
 
