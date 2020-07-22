@@ -25,7 +25,7 @@ class LoginController extends Controller
                 Session::put('nama',$data['nama']);
                 Session::put('login',TRUE);
                 Session::save();
-                return view('admin/dashboard');
+                return redirect('admin/');
             } else {
                 return redirect('/admin/login')->with(['error' => 'Password Salah']);
             }

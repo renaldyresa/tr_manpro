@@ -21,7 +21,7 @@
             <div class="content-login">
                 <div class="card text-white bg-dark mb-3" style="width: 400px;">
                     <div class="card-header title-login">
-                        <h3>Login</h3>
+                        <h3>Login Admin</h3>
                     </div>
                     <div class="card-body bg-light text-dark">
                         @if ($message = Session::get('error'))
