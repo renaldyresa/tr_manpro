@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('/', 'Mahasiswa\DashboardController@index');;
 Route::get('/hasil', 'Mahasiswa\HasilController@index');
 =======
@@ -23,6 +24,10 @@ Route::get('/hasil', 'Mahasiswa\HasilController@index');
 Route::get('/', 'Admin\DashboardController@index');
 Route::get('/login', 'Mahasiswa\LoginController@index');
 Route::post('/valid', 'Mahasiswa\LoginController@validator');
+=======
+Route::get('/', 'Admin\DashboardController@index');
+Route::get('/login', 'Mahasiswa\LoginController@index');
+>>>>>>> parent of 75436fa... update baru
 
 >>>>>>> parent of 841ee2c... update mahasiswa
 

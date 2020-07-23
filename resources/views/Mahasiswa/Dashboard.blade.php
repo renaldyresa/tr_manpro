@@ -15,7 +15,7 @@
             var bulan = tgl.getMonth();
             var tahun = tgl.getFullYear();
             tanggallengkap = namahari[hari] + ", " + tanggal + " " + namabulan[bulan] + " " + tahun;
-            document.write('<p id="nav-date">' + tanggallengkap + ' | {{Session::get('nip')}} - {{Session::get('nama')}} - Universitas Kristen Satya Wacana' + '</p>');
+            document.write('<p id="nav-date">' + tanggallengkap + ' | {{Session::get("nip")}} - {{Session::get("nama")}} - Universitas Kristen Satya Wacana' + '</p>');
         </script>
 </marquee>
 
