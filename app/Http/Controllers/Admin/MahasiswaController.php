@@ -10,6 +10,8 @@ use App\Entity\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 class MahasiswaController extends Controller
 {
@@ -28,6 +30,14 @@ class MahasiswaController extends Controller
         $result = MahasiswaModel::getAll();
         $data['data'] = $result;
         return view('Admin/Mahasiswa/mahasiswa', $data);
+    }
+
+    public function cetak_pdf()
+    {
+        $result = MahasiswaModel::getAll();
+        $data['data'] = $result ;
+        $pdf = PDF::loadview('Admin/Mahasiswa/mahasiswa_pdf', $data);
+        return $pdf->download('list-mahasiswa.pdf');
     }
 
     public function show($nim)

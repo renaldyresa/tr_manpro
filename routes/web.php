@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', 'Admin\LoginController@logout');
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/', 'Admin\MahasiswaController@index');
+        Route::get('/cetak_pdf', 'Admin\MahasiswaController@cetak_pdf');
         Route::get('/tambah', 'Admin\MahasiswaController@add');
         Route::post('/insert', 'Admin\MahasiswaController@insert');
         Route::get('/edit/{nim}', 'Admin\MahasiswaController@edit');
@@ -93,6 +94,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('detailmatkul')->group(function () {
         Route::get('/', 'Admin\DetailMatkulController@index');
         Route::get('/tambah/{kode_f}/{kode_p}', 'Admin\DetailMatkulController@add');
+        Route::get('/cetak_pdf/{kode}', 'Admin\DetailMatkulController@cetak_pdf');
         Route::post('/insert', 'Admin\DetailMatkulController@insert');
         Route::post('/insertkelas', 'Admin\KelasController@insert');
         Route::post('/insertjadwal', 'Admin\JadwalController@insert');
