@@ -14,8 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'Admin\DashboardController@index');
-Route::get('/login', 'Mahasiswa\LoginController@index');
+Route::get('/', 'Mahasiswa\DashboardController@index');
+
+Route::prefix('mahasiswa')->group(function () {
+    Route::get('/', 'Mahasiswa\DashboardController@index');
+    Route::get('/login', 'Mahasiswa\LoginController@index');
+    Route::post('/valid', 'Mahasiswa\LoginController@validator');
+    Route::get('/logout', 'Mahasiswa\LoginController@logout');
+    Route::prefix('registrasi_matakuliah')->group(function(){
+        Route::get('/{kode}', 'Mahasiswa\RegistrasiMatakuliahController@index');
+        Route::get('/kelas/{nim}/{kode}', 'Mahasiswa\RegistrasiMatakuliahController@addKelas');
+        Route::get('/{kode_p}/{kode_d}', 'Mahasiswa\RegistrasiMatakuliahController@showKelas');
+    });
+    Route::prefix('kartu_studi')->group(function(){
+        Route::get('/', 'Mahasiswa\KstController@index');
+    });
+});
+
 
 
 Route::prefix('admin')->group(function () {
@@ -25,6 +40,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/logout', 'Admin\LoginController@logout');
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/', 'Admin\MahasiswaController@index');
+        Route::get('/cetak_pdf', 'Admin\MahasiswaController@cetak_pdf');
         Route::get('/tambah', 'Admin\MahasiswaController@add');
         Route::post('/insert', 'Admin\MahasiswaController@insert');
         Route::get('/edit/{nim}', 'Admin\MahasiswaController@edit');
@@ -78,6 +94,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('detailmatkul')->group(function () {
         Route::get('/', 'Admin\DetailMatkulController@index');
         Route::get('/tambah/{kode_f}/{kode_p}', 'Admin\DetailMatkulController@add');
+        Route::get('/cetak_pdf/{kode}', 'Admin\DetailMatkulController@cetak_pdf');
         Route::post('/insert', 'Admin\DetailMatkulController@insert');
         Route::post('/insertkelas', 'Admin\KelasController@insert');
         Route::post('/insertjadwal', 'Admin\JadwalController@insert');

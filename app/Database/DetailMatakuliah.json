@@ -1,1 +1,27 @@
-{"8":{"detail_matkul":8,"kode_matkul":"MTK","kode_progdi":"67"},"9":{"detail_matkul":9,"kode_matkul":"AGM","kode_progdi":"67"},"10":{"detail_matkul":10,"kode_matkul":"MTK","kode_progdi":"69"},"11":{"detail_matkul":11,"kode_matkul":"AGM","kode_progdi":"68"}}
+{
+    "8": {
+        "detail_matkul": 8,
+        "kode_matkul": "MTK",
+        "kode_progdi": "67"
+    },
+    "9": {
+        "detail_matkul": 9,
+        "kode_matkul": "AGM",
+        "kode_progdi": "67"
+    },
+    "10": {
+        "detail_matkul": 10,
+        "kode_matkul": "MTK",
+        "kode_progdi": "69"
+    },
+    "11": {
+        "detail_matkul": 11,
+        "kode_matkul": "AGM",
+        "kode_progdi": "68"
+    },
+    "12": {
+        "detail_matkul": 12,
+        "kode_matkul": "PKN",
+        "kode_progdi": "67"
+    }
+}

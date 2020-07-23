@@ -4,6 +4,7 @@
 
 <div class="head-content pb-2">
     <h5><a href="{{URL::to('/admin/detailmatkul')}}">Detail Matakuliah</a> / {{$data_fakultas['nama_fakultas']}}</h5>
+    <a href="{{URL::to('/admin/detailmatkul/cetak_pdf/'.$data_fakultas['kode_fakultas'])}}"><button class="btn btn-sm  btn-outline-info mr-4">Export to PDF</button></a>
 </div>
 
 <table class="table table-bordered">

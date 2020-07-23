@@ -21,7 +21,7 @@
             <div class="content-login">
                 <div class="card text-white bg-dark mb-3" style="width: 400px;">
                     <div class="card-header title-login">
-                        <h3>Login</h3>
+                        <h3>Login Mahasiswa</h3>
                     </div>
                     <div class="card-body bg-light text-dark">
                         @if ($message = Session::get('error'))
@@ -31,9 +31,10 @@
                         </div>
                         @endif
                         <form action="{{URL::to('/mahasiswa/valid')}}" method="POST">
+                            @csrf
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                                <label for="username">NIM</label>
+                                <input type="text" class="form-control" name="nim" id="nim" placeholder="Nim">
                             </div>
                             <div class="form-group pb-md-4">
                                 <label for="password">Password</label>
