@@ -47,12 +47,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{URL::to('/mahasiswa/registrasi_matakuliah')}}">
+                            <a class="nav-link" href="{{URL::to('/mahasiswa/registrasi_matakuliah/'.Session::get('progdi'))}}">
                                 Registrasi Matakuliah
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{URL::to('/mahasiswa/kartu')}}">
+                            <a class="nav-link" href="{{URL::to('/mahasiswa/kartu_studi')}}">
                                 Kartu Studi
                             </a>
                         </li>

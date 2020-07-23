@@ -4,7 +4,7 @@
 
 
 <div class="head-content">
-    <h5>Kartu Studi</h5>
+    <h5>Registrasi Matakuliah</h5>
     @if ($message = Session::get('error'))
     <div class="alert alert-danger alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -22,26 +22,23 @@
 <table class="table table-bordered">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Kode</th>
-            <th scope="col">Matakuliah</th>
-            <th scope="col">B/U</th>
-            <th scope="col">SKS</th>
-            <th scope="col" class="aksi">Aksi</th>
+            <th scope="col">Kode Kelas</th>
+            <th scope="col">Nama Dosen</th>
+            <th scope="col">Jadwal</th>
+            <th scope="col">Kapasitas</th>
         </tr>
     </thead>
-    <tbody id="table-body">
-
-        @foreach($data as $dt)
+    <tbody>
+        @foreach ($data as $dt)
         <tr>
-            <td>{{ $dt['kode_kelas'] }}</td>
-            <td>{{ $dt['nama_matkul'] }}</td>
-            <td>{{ $dt['status'] }}</td>
-            <td>{{ $dt['sks'] }}</td>
-            <td> 
-                <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="">
-                    Delete
-                </button>
+            <td><a href="{{URL::to('/mahasiswa/registrasi_matakuliah/kelas/'.Session::get('nim').'/'.$dt['kode_kelas'])}}">{{ $dt['kode_kelas'] }}</a></td>
+            <td>{{ $dt['nama'] }}</td>
+            <td>
+                @foreach ($dt['jadwal'] as $jd)
+                {{$jd['hari']}}, {{$jd['jam_masuk']}} - {{$jd['jam_keluar']}} <br>
+                @endforeach
             </td>
+            <td>{{ $dt['kapasitas'] }}</td>
         </tr>
         @endforeach
     </tbody>
