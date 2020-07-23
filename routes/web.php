@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Admin\DashboardController@index');
 Route::get('/login', 'Mahasiswa\LoginController@index');
-Route::post('/valid', 'Mahasiswa\LoginController@validator');
 
 
 Route::prefix('admin')->group(function () {

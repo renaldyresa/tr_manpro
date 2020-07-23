@@ -20,7 +20,7 @@
 </marquee>
 
 <center>
-<h5 width="80%" style="";>Selamat Datang </h5>
+<h5 width="80%" >Selamat Datang </h5>
 </center>
 
 @endsection
