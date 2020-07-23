@@ -13,12 +13,6 @@ class DosenModel extends Model
         return $result;
     }
 
-    public static function countAll()
-    {
-        $result = DosenHelper::selectAll();
-        return count($result);
-    }
-
     public static function getById($nip)
     {
         $result = DosenHelper::selectById($nip);
@@ -42,6 +36,4 @@ class DosenModel extends Model
         $result = DosenHelper::delete($nim);
         return $result;
     }
-
-
 }

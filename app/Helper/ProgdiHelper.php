@@ -1,59 +1,53 @@
 <?php
 
-namespace App\Helper;
+namespace App\Helper ;
 
-use App\Entity\Progdi;
+use App\Entity\Progdi ;
 
 class ProgdiHelper
 {
-    private static $table = "Progdi";
-
-    public static function countAll()
-    {
-        $path = app_path() . "/Database/" . self::$table . ".json";
-        $json = json_decode(file_get_contents($path), true);
-        return count($json);
-    }
+    private static $table = "Progdi" ;
 
     public static function selectAll($kode)
     {
-        $path = app_path() . "/Database/" . self::$table . ".json";
+        $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
         $listdata = array();
-        if ($json != null) {
-            foreach ($json as $dt) {
-                if ($dt['kode_fakultas'] == $kode) {
+        if($json != null){
+            foreach($json as $dt){
+                if($dt['kode_fakultas'] == $kode){
                     $data = new Progdi(
                         $dt['kode_progdi'],
                         $dt['nama_progdi'],
-                        $dt['kode_fakultas']
+                        $dt['kode_fakultas'] 
                     );
                     array_push($listdata, $data);
                 }
             }
         }
-        return $listdata;
+        return $listdata ;
     }
 
     public static function selectById($kode_progdi)
     {
-        $path = app_path() . "/Database/" . self::$table . ".json";
+        $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-        if (array_key_exists($kode_progdi, $json)) {
+        if(array_key_exists($kode_progdi, $json)){
             return $json[$kode_progdi];
-        } else {
-            return false;
+        }else{
+            return false; 
         }
+            
     }
 
     public static function insert($data)
-    {
-        $path = app_path() . "/Database/" . self::$table . ".json";
+    { 
+        $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-        if (array_key_exists($data->kode_progdi, $json)) {
+        if(array_key_exists($data->kode_progdi, $json)){
             return false;
-        } else {
-            $dt = [
+        }else{
+            $dt = [ 
                 'kode_progdi' => $data->kode_progdi,
                 'nama_progdi' => $data->nama_progdi,
                 'kode_fakultas' => $data->kode_fakultas
@@ -68,10 +62,10 @@ class ProgdiHelper
 
     public static function update($data)
     {
-        $path = app_path() . "/Database/" . self::$table . ".json";
+        $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-        if (array_key_exists($data->kode_progdi, $json)) {
-            $json[$data->kode_progdi] = [
+        if(array_key_exists($data->kode_progdi, $json)){
+            $json[$data->kode_progdi] = [ 
                 'kode_progdi' => $data->kode_progdi,
                 'nama_progdi' => $data->nama_progdi,
                 'kode_fakultas' => $data->kode_fakultas
@@ -79,21 +73,21 @@ class ProgdiHelper
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return $data;
-        } else {
+        }else{
             return false;
         }
     }
 
     public static function delete($kode)
     {
-        $path = app_path() . "/Database/" . self::$table . ".json";
+        $path = app_path() . "/Database/".self::$table.".json";
         $json = json_decode(file_get_contents($path), true);
-        if (array_key_exists($kode, $json)) {
+        if(array_key_exists($kode, $json)){
             unset($json[$kode]);
             $jsonData = json_encode($json);
             file_put_contents($path, $jsonData);
             return True;
-        } else {
+        }else{
             return false;
         }
     }

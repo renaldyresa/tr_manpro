@@ -14,23 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', 'Mahasiswa\DashboardController@index');
-
-Route::prefix('mahasiswa')->group(function () {
-    Route::get('/', 'Mahasiswa\DashboardController@index');
-    Route::get('/login', 'Mahasiswa\LoginController@index');
-    Route::post('/valid', 'Mahasiswa\LoginController@validator');
-    Route::get('/logout', 'Mahasiswa\LoginController@logout');
-    Route::prefix('registrasi_matakuliah')->group(function(){
-        Route::get('/{kode}', 'Mahasiswa\RegistrasiMatakuliahController@index');
-        Route::get('/kelas/{nim}/{kode}', 'Mahasiswa\RegistrasiMatakuliahController@addKelas');
-        Route::get('/{kode_p}/{kode_d}', 'Mahasiswa\RegistrasiMatakuliahController@showKelas');
-    });
-    Route::prefix('kartu_studi')->group(function(){
-        Route::get('/', 'Mahasiswa\KstController@index');
-    });
-});
-
+Route::get('/', 'Admin\DashboardController@index');
+Route::get('/login', 'Mahasiswa\LoginController@index');
 
 
 Route::prefix('admin')->group(function () {
