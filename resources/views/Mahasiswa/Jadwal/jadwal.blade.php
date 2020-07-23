@@ -24,13 +24,29 @@
             <th scope="col">Kode</th>
             <th scope="col">Matakuliah</th>
             <th scope="col">Dosen</th>
-            <th scope="col">Hari</th>
-            <th scope="col">Jam</th>
-            <th scope="col">Ruang</th>
+            <th scope="col">Jadwal</th>
+            <th scope="col">Ruangan</th>
         </tr>
     </thead>
     <tbody id="table-body">
+        @foreach($data as $dt)
+        <tr>
+            <td>{{$dt['kode_kelas']}}</td>
+            <td>{{$dt['nama_matkul']}}</td>
+            <td>{{$dt['dosen']}}</td>
+            <td>
+                @foreach($dt['jadwal'] as $jadwal)
+                {{$jadwal}} <br>
+                @endforeach
+            </td>
+            <td>
+                @foreach($dt['ruangan'] as $ruang)
+                {{$ruang}} <br>
+                @endforeach
+            </td>
+        </tr>
 
+        @endforeach
     </tbody>
 </table>
 
