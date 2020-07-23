@@ -13,12 +13,6 @@ class FakultasModel extends Model
         return $result;
     }
 
-    public static function countAll()
-    {
-        $result = FakultasHelper::selectAll();
-        return count($result);
-    }
-
     public static function getById($nim)
     {
         $result = FakultasHelper::selectById($nim);

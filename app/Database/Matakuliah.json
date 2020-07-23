@@ -10,11 +10,5 @@
         "nama_matkul": "Agama",
         "jumlah_sks": "3",
         "jumlah_sks_bayar": "3"
-    },
-    "PKN": {
-        "kode_matkul": "PKN",
-        "nama_matkul": "PKN",
-        "jumlah_sks": "2",
-        "jumlah_sks_bayar": "3"
     }
 }

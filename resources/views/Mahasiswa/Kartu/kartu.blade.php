@@ -26,24 +26,12 @@
             <th scope="col">Matakuliah</th>
             <th scope="col">B/U</th>
             <th scope="col">SKS</th>
-            <th scope="col" class="aksi">Aksi</th>
+            <th scope="col">Keterangan</th>
+            <th scope="col">Aksi</th>
         </tr>
     </thead>
     <tbody id="table-body">
 
-        @foreach($data as $dt)
-        <tr>
-            <td>{{ $dt['kode_kelas'] }}</td>
-            <td>{{ $dt['nama_matkul'] }}</td>
-            <td>{{ $dt['status'] }}</td>
-            <td>{{ $dt['sks'] }}</td>
-            <td> 
-                <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="">
-                    Delete
-                </button>
-            </td>
-        </tr>
-        @endforeach
     </tbody>
 </table>
 

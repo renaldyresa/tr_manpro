@@ -13,12 +13,6 @@ class ProgdiModel extends Model
         return $result;
     }
 
-    public static function countAll()
-    {
-        $result = ProgdiHelper::countAll();
-        return $result;
-    }
-
     public static function getById($kode)
     {
         $result = ProgdiHelper::selectById($kode);
