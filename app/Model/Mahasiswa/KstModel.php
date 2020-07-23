@@ -75,12 +75,6 @@ class KstModel extends Model
     public static function insert($data)
     {
         $result = KSTHelper::selectAll();
-        foreach ($result as $res) {
-            if ($res->kode_kelas && $res->nim) {
-                return false;
-            }
-        }
-
         $result = KSTHelper::insert($data);
         return $result;
     }

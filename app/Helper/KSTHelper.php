@@ -96,7 +96,7 @@ class KSTHelper
             file_put_contents($path, $jsonData);
             return $data;
         } else {
-            return "data tidak ditemukan";
+            return false;
         }
     }
 
@@ -110,7 +110,7 @@ class KSTHelper
             file_put_contents($path, $jsonData);
             return True;
         } else {
-            return "data tidak ditemukan";
+            return false;
         }
     }
 }

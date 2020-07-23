@@ -26,4 +26,14 @@ class KstController extends Controller
         $data['data'] = $result ;       
         return view('Mahasiswa/Kartu/kartu', $data);
     }
+
+    public function delete($kode)
+    {
+        $result = KstModel::deleteData($kode);
+        if($result){
+            return redirect('/mahasiswa/kartu_studi')->with(['success' => 'berhasil dihapus']);
+        }else{
+            return redirect('/mahasiswa/kartu_studi')->with(['error' => 'Gagal Hapus Kartu Studi']);
+        }
+    }
 }

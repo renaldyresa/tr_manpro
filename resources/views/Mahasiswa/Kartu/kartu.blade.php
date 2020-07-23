@@ -40,7 +40,7 @@
             <td>{{ $dt['status'] }}</td>
             <td>{{ $dt['sks'] }}</td>
             <td> 
-                <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="">
+                <button type="button" class="btn btn-sm btn-danger text-light" data-toggle="modal" data-target="#confirm-delete" data-href="{{URL::to('/mahasiswa/kartu_studi/delete/'.$dt['kode_kst'])}}">
                     Delete
                 </button>
             </td>
@@ -48,5 +48,30 @@
         @endforeach
     </tbody>
 </table>
+
+
+<!----modal delete confirm--->
+<div id="confirm-delete" class="modal fade" role='dialog'>
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-body" id="modal-body">
+                Are you sure delete ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-sm btn-danger btn-delete">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('javascript')
+
+<script>
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('.btn-delete').attr('href', $(e.relatedTarget).data('href'));
+    });
+</script>
 
 @endsection

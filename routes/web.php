@@ -28,6 +28,7 @@ Route::prefix('mahasiswa')->group(function () {
     });
     Route::prefix('kartu_studi')->group(function(){
         Route::get('/', 'Mahasiswa\KstController@index');
+        Route::get('/delete/{kode}', 'Mahasiswa\KstController@delete');
     });
     Route::prefix('jadwal')->group(function(){
         Route::get('/', 'Mahasiswa\JadwalController@index');
