@@ -7,12 +7,10 @@ use App\Model\Admin\FakultasModel;
 use App\Model\Admin\ProgdiModel;
 use App\Model\Admin\DetailMatkulModel;
 use App\Entity\Dosen;
-use App\Model\Admin\KelasModel;
 use App\Model\Admin\MatakuliahModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
-use Barryvdh\DomPDF\Facade as PDF;
 
 class DetailMatkulController extends Controller
 {
@@ -31,15 +29,6 @@ class DetailMatkulController extends Controller
         $result = FakultasModel::getAll();
         $data['data'] = $result;
         return view('Admin/DetailMatkul/fakultas', $data);
-    }
-
-    public function cetak_pdf($kode_f)
-    {
-        $result = DetailMatkulModel::getDataPdf($kode_f);
-        $data['data'] = $result ;
-        // return view('Admin/DetailMatkul/export', $data);
-        $pdf = PDF::loadview('Admin/DetailMatkul/export', $data);
-        return $pdf->download('Jadwal.pdf');
     }
 
     public function show($kode)
@@ -61,36 +50,36 @@ class DetailMatkulController extends Controller
     public function add($kode_f, $kode_p)
     {
         $result = MatakuliahModel::getAll();
-        $data['kode_progdi'] = $kode_p;
-        $data['kode_fakultas'] = $kode_f;
-        $data['data'] = $result;
+        $data['kode_progdi'] = $kode_p ;
+        $data['kode_fakultas'] = $kode_f ;
+        $data['data'] = $result ;
         return view('Admin/DetailMatkul/tambahdetailmatkul', $data);
     }
 
     public function insert(Request $request)
     {
-        $kode_fakultas = $request->input()['kode_fakultas'];
-        $kode_progdi = $request->input()['kode_progdi'];
+        $kode_fakultas = $request->input()['kode_fakultas'] ;
+        $kode_progdi = $request->input()['kode_progdi'] ;
         $dt = [
             'kode_progdi' => $kode_progdi,
             'kode_matkul' => $request->input()['kode_matkul']
         ];
-
+        
         $result = DetailMatkulModel::insert($dt);
-        if ($result) {
-            return redirect('/admin/detailmatkul/' . $kode_fakultas . '/' . $kode_progdi)->with(['success' => 'Matakuliah berhasil ditambahkan']);
-        } else {
-            return redirect('/admin/detailmatkul/' . $kode_fakultas . '/' . $kode_progdi)->with(['error' => 'Gagal tambah Matakuliah']);
+        if($result){
+            return redirect('/admin/detailmatkul/'.$kode_fakultas.'/'.$kode_progdi)->with(['success' => 'Matakuliah berhasil ditambahkan']);
+        }else{
+            return redirect('/admin/detailmatkul/'.$kode_fakultas.'/'.$kode_progdi)->with(['error' => 'Gagal tambah Matakuliah']);
         }
     }
 
     public function delete($kode_f, $kode_p, $kode_d)
     {
         $result = DetailMatkulModel::deleteData($kode_d);
-        if ($result) {
-            return redirect('/admin/detailmatkul/' . $kode_f . '/' . $kode_p)->with(['success' => 'Matakuliah berhasil dihapus']);
-        } else {
-            return redirect('/admin/detailmatkul/' . $kode_f . '/' . $kode_p)->with(['error' => 'Data tidak ditemukan']);
+        if($result){
+            return redirect('/admin/detailmatkul/'.$kode_f.'/'.$kode_p)->with(['success' => 'Matakuliah berhasil dihapus']);
+        }else{
+            return redirect('/admin/detailmatkul/'.$kode_f.'/'.$kode_p)->with(['error' => 'Data tidak ditemukan']);
         }
     }
 }

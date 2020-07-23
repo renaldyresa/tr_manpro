@@ -21,9 +21,7 @@
 <div class="p-2">
     <a href="{{URL::to('/admin/mahasiswa/tambah')}}"><button class="btn btn-sm btn-success">Tambah</button></a>
     <span class="btn-toolbar mb-2 mb-md-0 float-right">
-    <a href="{{URL::to('/admin/mahasiswa/cetak_pdf')}}"><button class="btn btn-sm  btn-outline-info mr-4">Export to PDF</button></a>
         <div class="mr-2">
-            
             <form class="form-inline my-2 my-lg-0" action="javascript:load_search_data()">
                 <div class="form-group mr-sm-2">
                     <select id="opsi_search" class="form-control form-control-sm">

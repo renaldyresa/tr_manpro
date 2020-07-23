@@ -25,25 +25,6 @@ class KelasHelper
         return $listdata ;
     }
 
-    public static function selectAllById($kode)
-    {
-        $path = app_path() . "/Database/".self::$table.".json";
-        $json = json_decode(file_get_contents($path), true);
-        $listdata = array();
-        foreach($json as $dt){
-            if($dt['detail_matkul'] == $kode){
-                $data = new Kelas(
-                    $dt['kode_kelas'],
-                    $dt['kapasitas'],
-                    $dt['nip'],
-                    $dt['detail_matkul']
-                );
-                array_push($listdata, $data);
-            }
-        }
-        return $listdata ;
-    }
-
     public static function selectById($id)
     {
         $path = app_path() . "/Database/".self::$table.".json";

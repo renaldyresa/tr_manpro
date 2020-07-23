@@ -27,27 +27,6 @@ class JadwalHelper
         return $listdata ;
     }
 
-    public static function selectAllById($kode)
-    {
-        $path = app_path() . "/Database/".self::$table.".json";
-        $json = json_decode(file_get_contents($path), true);
-        $listdata = array();
-        foreach($json as $dt){
-            if($dt['kode_kelas'] == $kode){
-                $data = new Jadwal(
-                    $dt['id_jadwal'],
-                    $dt['hari'],
-                    $dt['jam_masuk'],
-                    $dt['jam_keluar'],
-                    $dt['kode_kelas'],
-                    $dt['kode_ruangan']
-                );
-                array_push($listdata, $data);
-            }
-        }
-        return $listdata ;
-    }
-
     public static function selectById($id)
     {
         $path = app_path() . "/Database/".self::$table.".json";
